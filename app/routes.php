@@ -24,5 +24,6 @@ Route::resource('sessions', 'SessionsController');
 
 Route::get('admin', function()
 {
-    return 'Pagina de admin';
+    $users = User::all();
+    return View::make('admin/users')->with('users', $users);
 })->before('auth');
