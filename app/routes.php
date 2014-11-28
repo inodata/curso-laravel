@@ -13,7 +13,7 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	return Redirect::to('login');
 });
 
 Route::get('login', 'SessionsController@create');
@@ -22,7 +22,7 @@ Route::get('logout', 'SessionsController@destroy');
 
 Route::resource('sessions', 'SessionsController');
 
-Route::get('admin', function(){
-
+Route::get('admin', function()
+{
     return 'Pagina de admin';
 })->before('auth');
