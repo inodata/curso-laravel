@@ -18,7 +18,7 @@ class SessionsController extends BaseController{
 
         }
 
-        return Redirect::back()->withInput();
+        return Redirect::back()->withInput()->with('login_errors', true);
 
     }
 
