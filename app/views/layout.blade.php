@@ -8,10 +8,16 @@
         @yield('head')
     </head>
     <body>
-        <center>
-            <h1>Curso Laravel</h1>
-        </center>
         <div class="container">
+            <nav class="navbar navbar-inverse">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="{{ URL::to('users') }}">Curso Laravel</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ URL::to('users') }}">Listar usuarios</a></li>
+                    <li><a href="{{ URL::to('users/create') }}">Crear usuario</a>
+                </ul>
+            </nav>
             <div class="content">
                 @yield('content')
             </div>

@@ -9,6 +9,7 @@
          <th>Username</th>
          <th>Email</th>
          <th>Creado</th>
+         <th>Ultima Edicion</th>
          <th>Acciones</th>
       </tr>
    </thead>
@@ -18,10 +19,11 @@
            <td>{{ $user->username }}</td>
            <td>{{ $user->email }}</td>
            <td>{{ $user->created_at->format('F d, Y h:ia') }}</td>
+           <td>{{ $user->updated_at->format('F d, Y') }}</td>
            <td>
-               <a href="/users/{{ $user->id }}/edit" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
+               <a href="/users/{{ $user->id }}/edit" class="btn btn-info pull-left" style="margin-right: 3px;">Editar</a>
                {{ Form::open(['url' => '/users/' . $user->id, 'method' => 'DELETE']) }}
-               {{ Form::submit('Delete', ['class' => 'btn btn-danger'])}}
+               {{ Form::submit('Eliminar', ['class' => 'btn btn-danger'])}}
                {{ Form::close() }}
            </td>
          </tr>
