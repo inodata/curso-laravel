@@ -27,3 +27,5 @@ Route::get('admin', function()
     $users = User::all();
     return View::make('admin/users')->with('users', $users);
 })->before('auth');
+
+Route::resource('users', 'UsersController');

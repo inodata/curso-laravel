@@ -40,7 +40,7 @@
       }
 
     </style>
-@stop
+@endsection
 
 @section('content')
 <div class="row">
@@ -78,4 +78,4 @@
         {{ Form::close() }}
     </div>
 </div>
-@stop
+@endsection
