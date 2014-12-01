@@ -11,7 +11,7 @@
             @section('navbar')
             <nav class="navbar navbar-inverse">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="{{ URL::to('users') }}">Curso Laravel</a>
+                    <a class="navbar-brand" href="/hello">Curso Laravel</a>
                 </div>
                 <ul class="nav navbar-nav">
                     <li><a href="{{ URL::to('users') }}">Listar usuarios</a></li>

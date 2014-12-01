@@ -16,16 +16,12 @@ Route::get('/', function()
 	return Redirect::to('login');
 });
 
+Route::get('/hello', 'HomeController@showWelcome');
+
 Route::get('login', 'SessionsController@create');
 
 Route::get('logout', 'SessionsController@destroy');
 
 Route::resource('sessions', 'SessionsController');
-
-Route::get('admin', function()
-{
-    $users = User::all();
-    return View::make('admin/users')->with('users', $users);
-})->before('auth');
 
 Route::resource('users', 'UsersController');
