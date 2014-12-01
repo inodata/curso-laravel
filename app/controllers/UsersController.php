@@ -56,7 +56,11 @@ class UsersController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		// get the nerd
+        $user = User::find($id);
+
+        // show the edit form and pass the nerd
+        return View::make('users.edit')->with('user', $user);
 	}
 
 
@@ -68,7 +72,14 @@ class UsersController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$user = User::find($id);
+
+        $user->username   = Input::get('username');
+        $user->email      = Input::get('email');
+        $user->password   = Input::get('password');  //OJO: se hace uso del MUTATOR en el modelo
+        $user->save();
+
+        return Redirect::to('/users');
 	}
 
 
