@@ -26,56 +26,41 @@
                 box-shadow: 0 1px 2px rgba(0,0,0,.15);
       }
 
-      .login-form {
-        margin-left: 65px;
-      }
-       .error {
+      .error {
         color: red;
       }
 
-      legend {
-        margin-right: -50px;
-        font-weight: bold;
-        color: #404040;
-      }
-
     </style>
-@endsection
+@stop
 
 @section('content')
+
+@section('navbar')
+<center><h1>Curso Laravel</h1></center>
+@stop
+
 <div class="row">
     <div class="login-form">
-        {{ Form::open(['route' => 'sessions.store']) }}
+        {{ Form::open(['route' => 'sessions.store', 'class' => 'form col-md-12 center-block']) }}
             <!-- check for login errors flash var -->
             @if (Session::has('login_errors'))
-                <center><span class="error"><b>Username or password incorrect.</b></span></center>
+                <center><span class="error"><b>Email or Password incorrect.</b></span></center>
             @endif
 
-            <fieldset>
-                <div class="clearfix">
-                    {{ Form::label('email', 'Email: ') }}
-                    <div class="div_texbox">
-                        <div class="input-prepend">
-                            <span class="add-on"><i class="icon-user"></i></span>
-                            {{ Form::email('email') }}
-                        </div>
-                    </div>
+            <div class="login-box">
+                <div class="input-group ">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                    {{ Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'Email']) }}
                 </div>
 
-                <div class="clearfix">
-                    {{ Form::label('password', 'Password: ') }}
-                    <div class="div_texbox">
-                        <div class="input-prepend">
-                            <span class="add-on"><i class="icon-lock"></i></span>
-                            {{ Form::password('password') }}
-                        </div>
-                    </div>
-
+                <div class="input-group ">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                    {{ Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password']) }}
                 </div>
 
-                <div>{{ Form::submit('Login') }}</div>
-            </fieldset>
+                <div class='input-group'>{{ Form::submit('Login', ['class' => 'btn btn-primary btn-block']) }}</div>
+            </div>
         {{ Form::close() }}
     </div>
 </div>
-@endsection
+@stop

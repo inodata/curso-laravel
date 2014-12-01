@@ -4,11 +4,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {{ HTML::style('bootstrap/css/bootstrap.css') }}
-        {{ HTML::style('bootstrap/css/bootstrap-responsive.css') }}
         @yield('head')
     </head>
     <body>
         <div class="container">
+            @section('navbar')
             <nav class="navbar navbar-inverse">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="{{ URL::to('users') }}">Curso Laravel</a>
@@ -18,6 +18,7 @@
                     <li><a href="{{ URL::to('users/create') }}">Crear usuario</a>
                 </ul>
             </nav>
+            @show
             <div class="content">
                 @yield('content')
             </div>
