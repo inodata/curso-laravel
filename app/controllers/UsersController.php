@@ -3,7 +3,7 @@
 class UsersController extends \BaseController {
 
 	/**
-	 * Display a listing of the resource.
+	 * Muestra el listado de elementos
 	 *
 	 * @return Response
 	 */
@@ -15,7 +15,7 @@ class UsersController extends \BaseController {
 
 
 	/**
-	 * Show the form for creating a new resource.
+	 * Muestra el formulario de creacion del elemento
 	 *
 	 * @return Response
 	 */
@@ -26,46 +26,73 @@ class UsersController extends \BaseController {
 
 
 	/**
-	 * Store a newly created resource in storage.
+	 * Guarda un elemento recien creado
 	 *
 	 * @return Response
 	 */
 	public function store()
 	{
-		//
+		//Reglas de validacion, estas se van a pasar al modelo via Ardent
+        $rules = array(
+            'username'       => 'required',
+            'email'      => 'required|email',
+        );
+        $validator = Validator::make(Input::all(), $rules);
+
+        //Validacion en accion
+        if ($validator->fails()) {
+            return Redirect::to('users/create')
+                ->withErrors($validator)
+                ->withInput(Input::except('password'));
+        } else {
+            // Guardado del usuario
+            $user = new User;
+            $user->username   = Input::get('username');
+            $user->email      = Input::get('email');
+            $user->password   = Input::get('password');
+            $user->save();
+
+            // redirect
+            Session::flash('message', 'Usuario creado exitosamente!');
+            return Redirect::to('users');
+        }
 	}
 
 
 	/**
-	 * Display the specified resource.
+	 * Muestra el usuario seleccionado
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function show($id)
 	{
-		//
+		//Obtener el usuario
+		$user = User::find($id);
+
+        // Renderea la vista y le pasa el usuario con los datos.
+        return View::make('users.show')->with('user', $user);
 	}
 
 
 	/**
-	 * Show the form for editing the specified resource.
+	 * Muestra el formulario de edicion
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function edit($id)
 	{
-		// get the nerd
+		// get the user
         $user = User::find($id);
 
-        // show the edit form and pass the nerd
+        // show the edit form and pass the user
         return View::make('users.edit')->with('user', $user);
 	}
 
 
 	/**
-	 * Update the specified resource in storage.
+	 * Actualiza el elemento seleccionado
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -84,7 +111,7 @@ class UsersController extends \BaseController {
 
 
 	/**
-	 * Remove the specified resource from storage.
+	 * Elimina el elemento
 	 *
 	 * @param  int  $id
 	 * @return Response

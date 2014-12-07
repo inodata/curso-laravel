@@ -1,18 +1,16 @@
 @extends('layout')
 
-@section('title') Create User @stop
+@section('title') Crear Usuario @stop
 
 @section('content')
 
 <div class='col-lg-4 col-lg-offset-4'>
 
-    @if ($errors->has())
-        @foreach ($errors->all() as $error)
-            <div class='bg-danger alert'>{{ $error }}</div>
-        @endforeach
-    @endif
+    <h1><i class='glyphicon glyphicon-user'></i>Crear usuario</h1>
 
-    <h1><i class='fa fa-user'></i> Crear usuario</h1>
+    @if ($errors->has())
+        <div class='bg-danger alert'>{{ HTML::ul($errors->all()) }}</div>
+    @endif
 
     {{ Form::open(['role' => 'form', 'url' => '/users']) }}
 

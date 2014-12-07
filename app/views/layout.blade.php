@@ -9,15 +9,17 @@
     <body>
         <div class="container">
             @section('navbar')
-            <nav class="navbar navbar-inverse">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="/hello">Curso Laravel</a>
-                </div>
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ URL::to('users') }}">Listar usuarios</a></li>
-                    <li><a href="{{ URL::to('users/create') }}">Crear usuario</a>
-                </ul>
-            </nav>
+                <nav class="nav navbar navbar-inverse" role="navigation">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="/hello">Curso Laravel</a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li><a href="{{ URL::to('users') }}">Listar usuarios</a></li>
+                        <li><a href="{{ URL::to('users/create') }}">Crear usuario</a></li>
+                        <li><a href="{{ URL::to('logout') }}">Salir</a></li>
+                    </ul>
+               </nav>
+
             @show
             <div class="content">
                 @yield('content')
