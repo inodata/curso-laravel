@@ -18,10 +18,10 @@ class CreateUsersTable extends Migration {
 
 			//llaves foraneas
 			$table->integer('department_id')->unsigned();
-			$table->foreign('department_id')->references('id')->on('departments');
+			$table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');;
 
 			$table->integer('cost_center_id')->unsigned();
-			$table->foreign('cost_center_id')->references('id')->on('cost_centers');
+			$table->foreign('cost_center_id')->references('id')->on('cost_centers')->onDelete('cascade');;
 
 			$table->string('username');
 			$table->string('password');
