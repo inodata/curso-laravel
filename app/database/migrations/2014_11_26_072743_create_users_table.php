@@ -15,6 +15,14 @@ class CreateUsersTable extends Migration {
 		Schema::create('users', function(Blueprint $table)
 		{
 			$table->increments('id');
+
+			//llaves foraneas
+			$table->integer('department_id')->unsigned();
+			$table->foreign('department_id')->references('id')->on('departments');
+
+			$table->integer('cost_center_id')->unsigned();
+			$table->foreign('cost_center_id')->references('id')->on('cost_centers');
+
 			$table->string('username');
 			$table->string('password');
 			$table->timestamps();
