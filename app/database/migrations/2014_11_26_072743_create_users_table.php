@@ -17,10 +17,10 @@ class CreateUsersTable extends Migration {
 			$table->increments('id');
 
 			//llaves foraneas
-			$table->integer('department_id')->unsigned();
+			$table->integer('department_id')->unsigned()->nullable();
 			$table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');;
 
-			$table->integer('cost_center_id')->unsigned();
+			$table->integer('cost_center_id')->unsigned()->nullable();
 			$table->foreign('cost_center_id')->references('id')->on('cost_centers')->onDelete('cascade');;
 
 			$table->string('username');
